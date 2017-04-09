@@ -1,9 +1,16 @@
 <%= form_for @song  do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %><br>
-  <%= f.label :artist_name %>
-  <%= f.text_field :artist_name %>
-  <br />
+  <br>
+
+  <% if @song.artist.nil? %>
+    <%= f.select :artist_id, Artist.all.collect { |a| [ a.name, a.id ] }, include_blank: true %>
+    <!-- <%= f.label :artist_name %>
+    <%= f.text_field :artist_name %><br> -->
+  <% else %>
+    <%= hidden_field_tag "song[artist_id]", @song.artist_id %>
+  <% end %>
+  <br>
 
   <%= f.submit %>
 <% end %>
