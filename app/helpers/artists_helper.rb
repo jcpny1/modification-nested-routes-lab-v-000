@@ -1,5 +1,5 @@
 module ArtistsHelper
-  def artist_select
+  def artist_select(arg1, arg2)
   end
 
   def display_artist(song)
